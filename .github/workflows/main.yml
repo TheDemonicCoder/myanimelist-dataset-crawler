@@ -3,10 +3,7 @@ name: Execute Python Script
 on:
   workflow_dispatch:  # Manually trigger the workflow
 env:
-  CLIENT_ID: ${{ secrets.CLIENT_ID }}
-  CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-  REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
 
 jobs:
   run_script:
@@ -27,12 +24,7 @@ jobs:
       - name: Execute Python script
 #         run: python mangalist.py 
         run: python anime.py  # Replace with the actual filename of your script
-      
-      - name: Print CSV file location
-        run: |
-          echo "CSV file location:"
-          ls -al *.csv
-        
+
       - name: commit and push
         run: |
             git config user.name "${GITHUB_ACTOR}"
